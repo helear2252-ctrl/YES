@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize Lucide Icons
     if (typeof lucide !== 'undefined') {
@@ -114,88 +114,88 @@
     /* --- 12 Algorithms Dataset --- */
     const topics = [
         {
-            title: "線性迴歸",
-            principle: "線性迴歸用一條直線描述自變數與連續目標值之間的關係，模型會尋找讓預測值與真實值距離最小的係數。訓練核心通常是最小化<span class=\"highlight-red\">殘差平方和</span>，並透過<span class=\"highlight-red\">最小平方法</span>得到最佳擬合線。",
-            example: "以房價預測為例，可以用坪數、屋齡、距離捷運站時間等特徵預測成交價格。模型會學出每個特徵對價格的影響方向與幅度，適合做基準模型與可解釋性分析。",
-            evaluation: "常用 MAE、MSE、RMSE 與 R² 評估預測誤差與解釋能力，也可以觀察殘差圖是否呈現隨機分佈。若殘差有明顯結構，代表模型可能漏掉非線性或重要特徵。",
-            mistake: "常見錯誤是忽略特徵之間的<span class=\"highlight-red\">多重共線性</span>，導致係數不穩定；也有人把相關性誤解成因果關係，或在未檢查離群值的情況下直接解讀模型。"
+            title: "線性迴歸 (Linear Regression)",
+            principle: "線性迴歸透過建立自變數與因變數之間的線性關係來進行預測。模型訓練的核心是最小化預測值與真實值之間的<span class=\"highlight-red\">殘差平方和</span>，藉此尋找最符合資料分佈的最佳擬合直線。",
+            example: "例如在房價預測中，以房屋坪數與地段作為特徵輸入，利用<span class=\"highlight-red\">最小平方法</span>計算出最佳的迴歸係數，進而精準推估未來的房屋銷售價格。",
+            evaluation: "模型主要使用 R² (決定係數)、均方誤差 (MSE) 以及平均絕對誤差 (MAE) 來評估預測的精準度與殘差分佈。",
+            mistake: "建模時常忽略特徵之間的<span class=\"highlight-red\">多重共線性</span>，這會導致模型係數估計極不穩定，並使統計檢定失效與解釋性下降。"
         },
         {
-            title: "邏輯迴歸",
-            principle: "邏輯迴歸雖然名稱有迴歸，但主要用於分類問題。它會把線性組合輸入 Sigmoid 函數，轉換成 0 到 1 之間的機率，再依照門檻判斷類別。",
-            example: "在客戶流失預測中，可以用登入頻率、消費金額、客服紀錄與使用天數預測是否流失。輸出機率能協助行銷團隊排序高風險客戶，而不是只給出是或否。",
-            evaluation: "分類任務常用 Accuracy、Precision、Recall、<span class=\"highlight-red\">F1-Score</span>、ROC 曲線與 <span class=\"highlight-red\">AUC</span> 評估。若類別不平衡，應優先觀察 Recall、Precision 與 F1-Score。",
-            mistake: "常見錯誤是直接使用 0.5 當固定門檻，卻沒有根據商業成本調整；也容易忽略特徵標準化與 L1/L2 <span class=\"highlight-red\">正則化</span>，導致模型泛化能力下降。"
+            title: "邏輯迴歸 (Logistic Regression)",
+            principle: "邏輯迴歸常用於二分類任務。它將線性模型的輸出通過 Sigmoid 函數映射到 0 與 1 之間，將迴歸問題轉化為預測某事件發生機率的機率模型。",
+            example: "例如在信用卡交易風險控制中，依據用戶消費地點、交易金額等特徵，預測該交易為欺詐交易（是/否）的機率分佈。",
+            evaluation: "評估指標包括混淆矩陣、精確率、召回率、<span class=\"highlight-red\">F1-Score</span> 以及 ROC 曲線下的面積 <span class=\"highlight-red\">AUC</span> 值。",
+            mistake: "在高維稀疏特徵下若未使用 L1/L2 <span class=\"highlight-red\">正則化</span>，容易使權重過大而產生嚴重的<span class=\"highlight-red\">過擬合</span>現象。"
         },
         {
-            title: "決策樹",
-            principle: "決策樹透過一連串 if-else 條件切分資料，每次切分都希望讓節點內的資料更純。分類樹常用 Gini 或 Entropy，迴歸樹則常用平方誤差降低量。",
-            example: "在信用審核中，決策樹可以依照收入、負債比、信用分數與工作年資建立規則，例如先判斷負債比，再判斷信用分數，最後輸出核准或拒絕。",
-            evaluation: "分類樹可用混淆矩陣、Precision、Recall 與 F1-Score；迴歸樹可用 MAE、RMSE 與 R²。也應檢查樹深度、葉節點樣本數與交叉驗證表現。",
-            mistake: "最常見問題是樹長得太深而產生<span class=\"highlight-red\">過擬合</span>。若沒有設定 max_depth、min_samples_leaf 或剪枝，模型會記住訓練資料雜訊，導致測試集表現不穩。"
+            title: "決策樹 (Decision Trees)",
+            principle: "決策樹透過樹狀結構對特徵進行多級分割。在每個節點，選擇使資料集不純度（如 Gini 指數或熵）下降最大、即資訊增益最高的特徵進行分支。",
+            example: "在銀行客戶信貸評估中，依據客戶年收入、工作年資及負債比率進行分支，最終決定是否核發貸款。",
+            evaluation: "通常藉由限制樹的最大深度、葉節點最小樣本數以及在測試集上的分類準確率來評估模型的表現。",
+            mistake: "如果決策樹長得太深，模型會過度擬合訓練集中的噪音，造成嚴重的<span class=\"highlight-red\">過擬合</span>，必須進行剪枝優化。"
         },
         {
-            title: "隨機森林",
-            principle: "隨機森林是多棵決策樹的集成方法，透過 Bootstrap 抽樣與隨機特徵選取建立差異化的樹，再用投票或平均降低單棵樹的不穩定性。",
-            example: "在疾病風險預測中，隨機森林可以同時處理年齡、檢驗數值、生活習慣與病史欄位，並用特徵重要度協助理解哪些因素最影響預測。",
-            evaluation: "除了測試集指標，也可利用未被某棵樹抽中的樣本估計<span class=\"highlight-red\">袋外誤差</span>，快速觀察泛化表現。分類看 AUC、F1-Score，迴歸看 RMSE 與 R²。",
-            mistake: "常見錯誤是只增加樹的數量，卻不調整 max_features、max_depth 或葉節點限制。隨機森林較穩健，但仍可能在資料洩漏或特徵偏誤下產生錯誤結論。"
+            title: "隨機森林 (Random Forests)",
+            principle: "隨機森林是種集成學習算法。它透過自助法抽樣建立多棵決策樹，並在訓練過程中隨機選取特徵子集，最後以投票或平均方式輸出預測。",
+            example: "在顧客流失預測中，隨機森林組合了數百棵不同的決策樹，能穩健處理包含複雜非線性關係的顧客特徵數據。",
+            evaluation: "可利用隨機抽樣留下的未參與訓練樣本計算<span class=\"highlight-red\">袋外誤差</span> (Out-of-Bag Error) 來進行內建交叉驗證。",
+            mistake: "雖然不易過擬合，但若未限制單棵樹深度，或特徵存在系統性偏差，模型仍可能無法有效泛化。"
         },
         {
-            title: "梯度提升樹",
-            principle: "梯度提升樹會逐步建立許多弱學習器，每一棵新樹都專注修正前面模型的錯誤。它透過損失函數的梯度方向更新模型，因此能捕捉複雜非線性關係。",
-            example: "在廣告點擊率預測中，梯度提升樹可以整合使用者行為、裝置、時間與內容特徵，學習不同條件組合下的點擊機率，常見實作包含 XGBoost、LightGBM 與 CatBoost。",
-            evaluation: "分類任務可看 LogLoss、AUC、F1-Score；迴歸任務可看 MAE、RMSE。訓練時應觀察驗證集曲線，並使用 <span class=\"highlight-red\">Early Stopping</span> 控制最佳迭代次數。",
-            mistake: "常見錯誤是 learning_rate 太高、樹太深或迭代次數過多，造成<span class=\"highlight-red\">過擬合</span>。若沒有驗證集與 Early Stopping，很容易得到訓練分數漂亮但實務表現不穩的模型。"
+            title: "梯度提升樹 (Gradient Boosting Trees)",
+            principle: "梯度提升樹是一種加性模型，透過迭代訓練多個弱決策樹。每棵新樹都致力於擬合上一輪模型預測產生的殘差，沿著梯度的反方向逐步優化損失函數。",
+            example: "在電子商務平台的廣告點擊率 (CTR) 預估中，利用 XGBoost 算法疊加多個弱決策樹，實現高效的特徵組合與預測。",
+            evaluation: "通常藉由交叉驗證下的 LogLoss、預測準確率以及學習曲線的收斂速度來評估模型的收斂狀況與品質。",
+            mistake: "若基模型過於複雜或迭代次數過多，極易導致<span class=\"highlight-red\">過擬合</span>，需要設定合理的學習率並搭配<span class=\"highlight-red\">Early Stopping</span>機制。"
         },
         {
-            title: "支持向量機",
-            principle: "支持向量機會尋找能最大化類別間隔的決策邊界，離邊界最近的資料點稱為支持向量。搭配 Kernel 技巧後，也能把非線性問題映射到高維空間處理。",
-            example: "在文字分類或影像特徵分類中，SVM 可用 TF-IDF 或抽取後的向量特徵判斷類別。當資料量中等、特徵維度較高時，SVM 往往能得到穩定表現。",
-            evaluation: "分類結果可用 Accuracy、Precision、Recall、F1-Score 與 AUC 評估。若使用不同 Kernel，應透過交叉驗證比較 C、gamma 與 kernel 設定。",
-            mistake: "常見錯誤是沒有標準化特徵，導致距離與間隔計算被大尺度欄位支配；另外在高維資料中若調參不足，也可能遇到<span class=\"highlight-red\">維度災難</span>與過擬合。"
+            title: "支持向量機 (SVM)",
+            principle: "支持向量機旨在特徵空間中尋找一個決策超平面，使得兩類樣本點到該超平面的最小幾何間距（Margin）最大化，從而獲得極佳的泛化能力。",
+            example: "在醫學影像分類中，透過核函數將低維度非線性特徵投射到高維空間，以尋找劃分腫瘤良性與惡性的超平面。",
+            evaluation: "評估指標包括測試集準確率、支援向量的數量比例，以及邊際寬度對雜訊的容忍程度。",
+            mistake: "當選用太過複雜的非線性核函數，或懲罰參數 C 設得過大時，容易對雜訊敏感並導致模型<span class=\"highlight-red\">過擬合</span>。"
         },
         {
-            title: "K-近鄰演算法",
-            principle: "KNN 是基於距離的懶學習方法，預測時會尋找與新資料最接近的 K 個訓練樣本，再用投票或平均決定結果。模型幾乎不訓練，但預測時計算成本較高。",
-            example: "在商品推薦中，可以根據使用者的瀏覽、購買與評分特徵，尋找最相似的一群使用者，再推薦他們喜歡的商品給新使用者。",
-            evaluation: "分類可用 Accuracy、F1-Score；迴歸可用 MAE、RMSE。選擇 K 值時應用驗證集或交叉驗證，並比較不同距離度量，例如 Euclidean、Manhattan 或 Cosine。",
-            mistake: "常見錯誤是沒有做特徵標準化，讓尺度大的欄位主導距離；在特徵很多時，距離差異會變得不明顯，容易出現<span class=\"highlight-red\">維度災難</span>。"
+            title: "K-近鄰演算法 (KNN)",
+            principle: "KNN 是一種惰性學習算法。當需要預測新樣本時，它在訓練集中找出距離最近的 K 個鄰居，並根據鄰居的類別進行投票或數值平均來得到預測值。",
+            example: "在個性化影音推薦中，根據觀影記錄計算用戶間的相似度距離，找出最相似的 5 個鄰居，並推薦他們看過的熱門影片。",
+            evaluation: "主要利用交叉驗證在測試集上的分類錯誤率來選取最合適的 K 值，並評估決策邊界的平滑度。",
+            mistake: "在高維度空間下，樣本間的距離度量會失效，導致所有樣本距離趨於一致，這被稱為<span class=\"highlight-red\">維度災難</span>。"
         },
         {
-            title: "單純貝氏分類器 Naive Bayes",
-            principle: "Naive Bayes 根據貝氏定理計算各類別的後驗機率，並假設特徵在給定類別後彼此條件獨立。這個假設雖然簡化，但在文字分類中非常有效率。",
-            example: "在垃圾郵件偵測中，可以把郵件文字轉成詞頻特徵，再計算某些詞出現在垃圾信或正常信中的機率，最後判斷新郵件最可能屬於哪一類。",
-            evaluation: "常用混淆矩陣、Precision、Recall、<span class=\"highlight-red\">F1-Score</span> 與 <span class=\"highlight-red\">AUC</span> 評估。若用於文字分類，也可觀察錯分樣本，檢查是否有關鍵詞被斷詞或前處理錯誤影響。",
-            mistake: "常見錯誤是忘記處理零機率問題，導致某些未出現過的詞讓整體機率歸零；也要注意特徵獨立假設不一定成立，模型解釋時不能過度放大單一詞的重要性。"
+            title: "單純貝氏分類器 (Naive Bayes)",
+            principle: "單純貝氏基於貝氏定理，並做出一個極強的假設：所有輸入特徵在給定類別條件下彼此獨立。透過計算後驗機率來預測最可能的類別。",
+            example: "垃圾郵件過濾系統中，統計各類辭彙在正常與垃圾郵件中出現的條件機率，藉以預估新收郵件是否為垃圾郵件。",
+            evaluation: "在不平衡資料集下，常用精確率、召回率與 ROC-AUC 曲線來綜合衡量分類器在各機率閾值下的表現。",
+            mistake: "當某個單字未出現在訓練集某類別中，其條件機率為零，會導致整體乘積歸零，必須使用<span class=\"highlight-red\">拉普拉斯平滑</span>修正。"
         },
         {
-            title: "K-平均演算法 K-Means Clustering",
-            principle: "K-Means 是非監督式分群方法，目標是把資料分成 K 群，讓每個點盡量接近自己的群中心。演算法會反覆分配樣本與更新中心，直到群中心穩定。",
-            example: "在客戶分群中，可以用消費頻率、平均客單價與最近購買時間，把客戶分成高價值、沉睡、價格敏感等群組，協助制定不同行銷策略。",
-            evaluation: "常用 SSE、Elbow Method 與 Silhouette Score 判斷群數與分群品質。也應搭配商業可解釋性，確認每一群是否能轉化成可執行的策略。",
-            mistake: "常見錯誤是任意指定 K 值，或在資料未標準化時直接分群。K-Means 對初始中心與離群值敏感，若資料維度太高也容易受到<span class=\"highlight-red\">維度災難</span>影響。"
+            title: "K-平均演算法 (K-Means Clustering)",
+            principle: "K-Means 是一種無監督聚類演算法。它藉由反覆計算資料點與 K 個聚類中心間的歐氏距離，並將資料歸入最近的類別，隨後更新中心點直到收斂。",
+            example: "在市場行銷的客群分析中，依據顧客的消費總額與購買頻率進行聚類，將顧客群體自動劃分為 K 個具代表性的細分市場。",
+            evaluation: "藉由手肘法觀察群內平方和 (SSE) 的轉折，並計算<span class=\"highlight-red\">輪廓係數</span> (Silhouette Coefficient) 評估群組的緊密與分離度。",
+            mistake: "對初始隨機中心點敏感，易陷入局部最佳解；且對於非球形分佈或大小差異極大的資料群落聚類效果不佳。"
         },
         {
-            title: "主成分分析 PCA",
-            principle: "PCA 是降維方法，會尋找能保留最多資料變異的互相垂直方向，稱為主成分。它把原本多個相關特徵轉換成較少的新特徵，降低噪音與視覺化難度。",
-            example: "在影像或問卷分析中，原始特徵可能很多且彼此相關。PCA 可以把高維資料壓縮成 2 到 3 個主成分，用於視覺化群集、加速模型或降低儲存成本。",
-            evaluation: "常看 explained variance ratio、累積解釋變異量與 Scree Plot，判斷要保留幾個主成分。若降維後要接模型，仍需用下游任務指標確認表現是否穩定。",
-            mistake: "常見錯誤是沒有先標準化特徵，讓尺度大的欄位主導主成分；也有人把 PCA 主成分直接當原始變數解釋，忽略其線性組合本質與<span class=\"highlight-red\">多重共線性</span>處理目的。"
+            title: "主成分分析 (PCA)",
+            principle: "PCA 是一種無監督特徵降維方法。它透過線性變換將高維資料正交投影到方差最大的新座標軸上，提取出互不相關的主成分來壓縮資料維度。",
+            example: "在人臉辨識或多光譜影像處理中，將上萬維度的像素特徵壓縮為數十個代表性主成分，保留核心變異資訊並降低計算量。",
+            evaluation: "藉由累積解釋變異比率（Scree Plot 碎石圖）來評估降維效果，決定保留多少個<span class=\"highlight-red\">PCA</span>主成分。",
+            mistake: "因為 PCA 主要是線性特徵轉換，若資料包含複雜的非線性流形結構，降維過程會損失大量關鍵的非線性關係。"
         },
         {
             title: "綜合比較與核心評估方法總覽",
-            principle: "不同演算法適合不同任務：線性模型重解釋、樹模型重非線性與特徵交互、集成模型重預測表現、分群與降維則用於探索資料結構。選模型前應先確認目標、資料型態與限制。",
-            example: "同一份客戶資料可先用 PCA 觀察結構，再用 K-Means 做分群；若目標是預測流失，則改用邏輯迴歸、隨機森林或梯度提升樹，並比較解釋性與準確度。",
-            evaluation: "迴歸任務看 MAE、MSE、RMSE、R²；分類任務看 Precision、Recall、<span class=\"highlight-red\">F1-Score</span>、<span class=\"highlight-red\">AUC</span>；分群任務看 SSE 與 Silhouette Score。評估必須搭配驗證集或交叉驗證。",
-            mistake: "常見錯誤是只追求單一高分數，卻忽略資料洩漏、類別不平衡、可解釋性與部署成本。模型比較也要注意<span class=\"highlight-red\">過擬合</span>與資料前處理是否一致。"
+            principle: "各演算法在解釋性、運算速度與精度上各有優劣。線性模型可解釋性高但難擬合複雜非線性；決策樹集成模型精度高但運算繁重；降維技術如 <span class=\"highlight-red\">PCA</span> 與 <span class=\"highlight-red\">SVD</span> 則用於精簡特徵。",
+            example: "在一個專案啟動時，先使用多種基準模型進行橫向比較與交叉驗證，以找出最適合特定業務場景的演算法。",
+            evaluation: "迴歸任務使用 MSE/R²，分類使用精度、召回率與 <span class=\"highlight-red\">AUC</span>，聚類則以<span class=\"highlight-red\">輪廓係數</span>衡量。",
+            mistake: "容易盲目追求複雜的深度學習模型，忽略了簡單模型的效率與可解釋性，或是由於特徵洩漏而在評估中掩蓋了<span class=\"highlight-red\">過擬合</span>。"
         },
         {
             title: "機器學習進階學習路徑指南",
-            principle: "進階學習應從資料理解、特徵工程、模型選擇、驗證策略、部署監控一路串起。演算法只是其中一段，真正的能力在於能穩定解決資料問題並解釋決策。",
-            example: "建議路徑是先熟悉 Python、Pandas、視覺化與統計基礎，再實作迴歸、分類、分群與降維專案；接著學習交叉驗證、Pipeline、模型部署與監控。",
-            evaluation: "可用作品集評估學習成果：是否能清楚說明問題、資料來源、特徵處理、模型比較、評估指標與限制。進階階段也應補上實驗紀錄、版本控管與自動化測試。",
-            mistake: "常見錯誤是只背演算法名詞，沒有完整跑過資料專案；或忽略<span class=\"highlight-red\">正則化</span>、資料洩漏、模型監控與實務成本。學習路徑應重視可重現流程，而不是只追求更複雜模型。"
+            principle: "進階機器學習需要紮實的數學基礎，包括線性代數、微積分與機率論。理解矩陣分解如奇異值分解 (<span class=\"highlight-red\">SVD</span>) 等底層數學原理，是理解現代推薦與降維算法的基石。",
+            example: "進階學習路徑包含特徵工程實務、深度學習架構、超參數自動優化，以及將模型推向生產環境所需的部署流程與監控。",
+            evaluation: "可透過 Kaggle 競賽實戰、高難度開源專案重構，以及系統架構設計的完整度來評估進階技術實力。",
+            mistake: "只注重理論推導而缺乏動手寫代碼能力，或者忽略了模型在實際上線後的維護、監控與更新，這是現代 <span class=\"highlight-red\">MLOps</span> 流程中常犯的重大疏漏。"
         }
     ];
 
@@ -206,6 +206,7 @@
         const topic = topics[index];
         if (!topic || !algoContentDisplay) return;
 
+        // 1. Update active button state in the DOM
         const buttons = document.querySelectorAll('.algo-btn');
         buttons.forEach((btn, idx) => {
             if (idx === index) {
@@ -215,59 +216,43 @@
             }
         });
 
+        // 2. Render content structure inside algo-content-display
         algoContentDisplay.innerHTML = `
-            <div class="topic-glass-card">
-                <div class="algo-display-header">
-                    <h3 class="display-title">${topic.title}</h3>
-                    <span class="display-status-badge">Topic Active</span>
+            <div class="algo-display-header">
+                <h3 class="display-title">${topic.title}</h3>
+                <span class="display-status-badge">Phase 2 Active</span>
+            </div>
+            <div class="algo-content-display-body">
+                <div class="topic-section-card">
+                    <h4><i data-lucide="book-open"></i> 一、詳細原理</h4>
+                    <p>${topic.principle}</p>
                 </div>
-                <div class="algo-content-display-body">
-                    <div class="topic-section-card">
-                        <h4><i data-lucide="book-open"></i> 一、詳細原理</h4>
-                        <p>${topic.principle}</p>
-                    </div>
-                    <div class="topic-section-card">
-                        <h4><i data-lucide="code"></i> 二、實作例子</h4>
-                        <p>${topic.example}</p>
-                    </div>
-                    <div class="topic-section-card">
-                        <h4><i data-lucide="bar-chart-2"></i> 三、評估方法</h4>
-                        <p>${topic.evaluation}</p>
-                    </div>
-                    <div class="topic-section-card">
-                        <h4><i data-lucide="alert-triangle"></i> 四、常見錯誤</h4>
-                        <p>${topic.mistake}</p>
-                    </div>
+                <div class="topic-section-card">
+                    <h4><i data-lucide="code"></i> 二、實作例子</h4>
+                    <p>${topic.example}</p>
+                </div>
+                <div class="topic-section-card">
+                    <h4><i data-lucide="bar-chart-2"></i> 三、評估方法</h4>
+                    <p>${topic.evaluation}</p>
+                </div>
+                <div class="topic-section-card">
+                    <h4><i data-lucide="alert-triangle"></i> 四、常見錯誤</h4>
+                    <p>${topic.mistake}</p>
                 </div>
             </div>
         `;
 
+        // 3. Re-create Lucide icons inside the rendered content
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
     }
+
     // Bind event listeners to the 12 buttons
     const algoButtons = document.querySelectorAll('.algo-btn');
     algoButtons.forEach((button, idx) => {
         button.addEventListener('click', () => {
             renderTopic(idx);
-            if (window.innerWidth <= 768) {
-                requestAnimationFrame(() => {
-                    const topicContent =
-                        document.getElementById('topicContent') ||
-                        algoContentDisplay;
-
-                    if (topicContent) {
-                        const offset = 90;
-                        const targetPosition = topicContent.getBoundingClientRect().top + window.scrollY - offset;
-
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            }
         });
     });
 
@@ -363,7 +348,7 @@
             { label: 'MAE', value: formatNumber(metrics.mae, 2), accent: 'metric-blue' },
             { label: 'MSE', value: formatNumber(metrics.mse, 2), accent: 'metric-purple' },
             { label: 'RMSE', value: formatNumber(metrics.rmse, 2), accent: 'metric-red' },
-            { label: 'R簡', value: formatNumber(metrics.r2, 4), accent: 'metric-purple' }
+            { label: 'R²', value: formatNumber(metrics.r2, 4), accent: 'metric-purple' }
         ];
 
         metricsGrid.innerHTML = cards.map(card => `
@@ -550,7 +535,7 @@
                         pointHoverRadius: 7
                     },
                     {
-                        label: '?Ｙ黎??(Outlier)',
+                        label: '離群值 (Outlier)',
                         data: [],
                         backgroundColor: 'rgba(239, 68, 68, 0.85)',
                         borderColor: '#ef4444',
@@ -558,7 +543,7 @@
                         pointHoverRadius: 8
                     },
                     {
-                        label: '迴歸線',
+                        label: '擬合迴歸線',
                         data: [],
                         type: 'line',
                         borderColor: '#8b5cf6',
@@ -601,7 +586,7 @@
                         max: 100,
                         title: {
                             display: true,
-                            text: '?孵噩 X',
+                            text: '特徵 X',
                             font: {
                                 family: "'Outfit', 'Inter', sans-serif",
                                 size: 13,
@@ -615,7 +600,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: '?格? Y',
+                            text: '目標 Y',
                             font: {
                                 family: "'Outfit', 'Inter', sans-serif",
                                 size: 13,
@@ -637,7 +622,7 @@
     // Launch the Regression demo
     initRegressionDemo();
 
-    /* --- Hero Action Interactivity --- */
+    /* --- Temporary Placeholders Interactivity --- */
     // Trigger toast warning when interactive buttons in other sections are clicked
     const actionButtons = document.querySelectorAll('.btn-interactive, .btn-streamlit-trigger');
     actionButtons.forEach(btn => {
@@ -649,8 +634,7 @@
                 return;
             }
             e.preventDefault();
-            showToast('?批捆撠銝??挾?');
+            showToast('內容將於下一階段加入');
         });
     });
 });
-
