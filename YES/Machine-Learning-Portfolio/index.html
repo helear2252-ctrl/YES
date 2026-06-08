@@ -43,28 +43,35 @@
 
     <!-- Hero Section -->
     <header id="home" class="hero-section">
-        <div class="hero-background">
-            <div class="bg-shape shape-1"></div>
-            <div class="bg-shape shape-2"></div>
+        <div class="hero-glow-container">
+            <div class="hero-glow-blue"></div>
+            <div class="hero-glow-purple"></div>
         </div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">機器學習十大演算法<br><span class="gradient-text">資料分析作品集</span></h1>
+                <div class="hero-badge-wrap">
+                    <span class="hero-mini-badge"><i data-lucide="line-chart"></i> Data Science Portfolio</span>
+                </div>
+                <h1 class="hero-title">機器學習十大演算法<br><span class="gradient-text-premium">資料分析作品集</span></h1>
                 <p class="hero-subtitle">Linear Regression × Machine Learning × CRISP-DM × Data Visualization</p>
                 
-                <div class="hero-tags">
-                    <span class="tag-pill"><i data-lucide="play-circle"></i> 互動式模型展示</span>
-                    <span class="tag-pill tag-red"><i data-lucide="alert-triangle"></i> Outlier 分析</span>
-                    <span class="tag-pill"><i data-lucide="download"></i> CSV 匯出</span>
-                    <span class="tag-pill"><i data-lucide="server"></i> Streamlit 後端整合</span>
+                <!-- Highlight red focus text -->
+                <div class="hero-highlight-red-box">
+                    <div class="red-focus-badge">
+                        <i data-lucide="zap"></i>
+                        <span>焦點技術</span>
+                    </div>
+                    <span class="highlight-red-content-text">
+                        互動式模型展示 / Outlier 分析 / CSV 匯出 / Streamlit 後端整合
+                    </span>
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#interactive-demo" class="btn btn-primary btn-interactive">
+                    <a href="#interactive-demo" class="btn btn-primary btn-interactive hero-btn-main">
                         <span>前往互動分析</span>
                         <i data-lucide="arrow-right"></i>
                     </a>
-                    <a href="#streamlit" class="btn btn-secondary btn-streamlit-trigger">
+                    <a href="#streamlit" class="btn btn-secondary btn-streamlit-trigger hero-btn-sub">
                         <span>開啟 Streamlit 後端</span>
                         <i data-lucide="external-link"></i>
                     </a>
@@ -72,40 +79,53 @@
             </div>
             
             <div class="hero-visual">
-                <div class="topic-glass-card hero-card">
-                    <div class="card-header-bar">
-                        <span class="dot dot-red"></span>
-                        <span class="dot dot-yellow"></span>
-                        <span class="dot dot-green"></span>
-                        <span class="card-bar-title">ml_model_visualization.py</span>
+                <div class="hero-cards-stack">
+                    <!-- Card 1: Regression Demo -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box blue">
+                            <i data-lucide="sliders"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Regression Demo</h3>
+                            <p class="card-desc">即時變更參數擬合迴歸線與觀察拉扯效應</p>
+                        </div>
+                        <div class="card-status-dot blue"></div>
                     </div>
-                    <div class="hero-card-body">
-                        <div class="skeleton-chart-container">
-                            <div class="skeleton-bar-chart">
-                                <div class="sk-bar" style="height: 40%"></div>
-                                <div class="sk-bar active" style="height: 75%"></div>
-                                <div class="sk-bar" style="height: 55%"></div>
-                                <div class="sk-bar" style="height: 90%"></div>
-                                <div class="sk-bar" style="height: 30%"></div>
-                                <div class="sk-bar" style="height: 65%"></div>
-                            </div>
-                            <div class="skeleton-dots-scatter">
-                                <span class="dot-point" style="top: 20%; left: 30%;"></span>
-                                <span class="dot-point" style="top: 45%; left: 55%;"></span>
-                                <span class="dot-point outlier" style="top: 80%; left: 20%;"></span>
-                                <span class="dot-point" style="top: 60%; left: 80%;"></span>
-                            </div>
+                    
+                    <!-- Card 2: Outlier Detection -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box red">
+                            <i data-lucide="alert-octagon"></i>
                         </div>
-                        <div class="card-stats">
-                            <div class="stat-item">
-                                <span class="stat-label">Model Accuracy</span>
-                                <span class="stat-val text-blue">94.2%</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Outliers Found</span>
-                                <span class="stat-val text-red">10</span>
-                            </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Outlier Detection</h3>
+                            <p class="card-desc">使用 Cooks Distance 等演算法偵測極端值</p>
                         </div>
+                        <div class="card-status-dot red animate-pulse"></div>
+                    </div>
+                    
+                    <!-- Card 3: CSV Export -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box purple">
+                            <i data-lucide="file-spreadsheet"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">CSV Export</h3>
+                            <p class="card-desc">支援一鍵導出目前調整與預測後之完整資料集</p>
+                        </div>
+                        <div class="card-status-dot purple"></div>
+                    </div>
+                    
+                    <!-- Card 4: Streamlit Backend -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box gray">
+                            <i data-lucide="server"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Streamlit Backend</h3>
+                            <p class="card-desc">結合 Python 機器學習運算實力之後端引擎整合</p>
+                        </div>
+                        <div class="card-status-dot gray"></div>
                     </div>
                 </div>
             </div>
@@ -124,75 +144,62 @@
             </div>
 
             <!-- Algorithm Grid & Content Showcase -->
-            <div class="algo-showcase-container">
-                <!-- 12 Buttons Grid -->
+            <div class="algo-buttons-card">
                 <div class="algo-buttons-grid">
-                    <button class="algo-btn active" data-id="1">
+                    <button class="algo-btn active" data-id="1" data-index="0">
                         <span class="algo-num">01</span>
                         <span class="algo-name">線性迴歸</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="2">
+                    <button class="algo-btn" data-id="2" data-index="1">
                         <span class="algo-num">02</span>
                         <span class="algo-name">邏輯迴歸</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="3">
+                    <button class="algo-btn" data-id="3" data-index="2">
                         <span class="algo-num">03</span>
                         <span class="algo-name">決策樹</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="4">
+                    <button class="algo-btn" data-id="4" data-index="3">
                         <span class="algo-num">04</span>
                         <span class="algo-name">隨機森林</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="5">
+                    <button class="algo-btn" data-id="5" data-index="4">
                         <span class="algo-num">05</span>
                         <span class="algo-name">梯度提升樹</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="6">
+                    <button class="algo-btn" data-id="6" data-index="5">
                         <span class="algo-num">06</span>
                         <span class="algo-name">支持向量機</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="7">
+                    <button class="algo-btn" data-id="7" data-index="6">
                         <span class="algo-num">07</span>
                         <span class="algo-name">K-近鄰演算法</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
                     </button>
-                    <button class="algo-btn" data-id="8">
+                    <button class="algo-btn" data-id="8" data-index="7">
                         <span class="algo-num">08</span>
-                        <span class="algo-name">Naive Bayes</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
+                        <span class="algo-name">單純貝氏分類器 Naive Bayes</span>
                     </button>
-                    <button class="algo-btn" data-id="9">
+                    <button class="algo-btn" data-id="9" data-index="8">
                         <span class="algo-num">09</span>
-                        <span class="algo-name">K-Means</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
+                        <span class="algo-name">K-平均演算法 K-Means Clustering</span>
                     </button>
-                    <button class="algo-btn" data-id="10">
+                    <button class="algo-btn" data-id="10" data-index="9">
                         <span class="algo-num">10</span>
-                        <span class="algo-name">PCA 降維</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
+                        <span class="algo-name">主成分分析 PCA</span>
                     </button>
-                    <button class="algo-btn algo-btn-special" data-id="11">
+                    <button class="algo-btn algo-btn-special" data-id="11" data-index="10">
                         <span class="algo-num"><i data-lucide="git-compare"></i></span>
-                        <span class="algo-name">綜合比較與總覽</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
+                        <span class="algo-name">綜合比較與核心評估方法總覽</span>
                     </button>
-                    <button class="algo-btn algo-btn-special" data-id="12">
+                    <button class="algo-btn algo-btn-special" data-id="12" data-index="11">
                         <span class="algo-num"><i data-lucide="trending-up"></i></span>
-                        <span class="algo-name">進階學習路徑</span>
-                        <i data-lucide="chevron-right" class="arrow"></i>
+                        <span class="algo-name">機器學習進階學習路徑指南</span>
                     </button>
                 </div>
+            </div>
 
-                <!-- Display Panel (Dynamic Content in Phase 2) -->
-                <div class="algo-content-display topic-glass-card" id="algo-content-display">
-                    <!-- Content will be injected dynamically by script.js -->
-                </div>
+            <!-- Display Panel -->
+            <div class="algo-content-display topic-glass-card" id="algo-content-display">
+                <!-- Content will be injected dynamically by script.js -->
             </div>
         </section>
 
@@ -308,60 +315,6 @@
                 <p class="section-desc">自動偵測並標記資料集中偏離常態的極端值（離群值）。</p>
             </div>
 
-            <div class="skeleton-container-card">
-                <div class="table-actions-header">
-                    <div class="table-meta-sk"></div>
-                    <div class="table-btn-sk btn-sk-red"></div>
-                </div>
-                <div class="skeleton-table-wrapper">
-                    <table class="skeleton-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Feature A</th>
-                                <th>Feature B</th>
-                                <th>Target Y</th>
-                                <th>Residual</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="outlier-row-skeleton">
-                                <td><div class="sk-cell w-12"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-16 highlight-red-text"></div></td>
-                                <td><span class="highlight-red-badge">Outlier</span></td>
-                            </tr>
-                            <tr class="outlier-row-skeleton">
-                                <td><div class="sk-cell w-12"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-16 highlight-red-text"></div></td>
-                                <td><span class="highlight-red-badge">Outlier</span></td>
-                            </tr>
-                            <!-- Skeleton Row Placeholders -->
-                            <tr class="muted-row-skeleton">
-                                <td><div class="sk-cell w-12"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-20"></div></td>
-                                <td><div class="sk-cell w-16"></div></td>
-                                <td><span class="status-normal-badge">Normal</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="skeleton-interactive-placeholder border-top-none">
-                    <div class="placeholder-icon-wrap bg-red-light">
-                        <i data-lucide="alert-octagon" class="placeholder-icon text-red"></i>
-                    </div>
-                    <p class="placeholder-info-text">離群值偵測演算法區塊</p>
-                    <span class="placeholder-subtext">第二階段將自動以庫克距離 (Cook's Distance) 或 Z-Score 標記出偏離值</span>
-                </div>
-            </div>
         </section>
 
         <!-- Raw Data Section (Blank/Skeleton) -->
@@ -395,37 +348,6 @@
                 <p class="section-desc">檢視、過濾、並導出所使用的原始分析數據集。</p>
             </div>
 
-            <div class="skeleton-container-card">
-                <div class="raw-data-toolbar">
-                    <div class="search-bar-sk"></div>
-                    <div class="button-group-sk">
-                        <div class="table-btn-sk"></div>
-                        <div class="table-btn-sk"></div>
-                    </div>
-                </div>
-                <div class="skeleton-table-wrapper-large">
-                    <div class="sk-table-grid">
-                        <div class="sk-table-header-row">
-                            <div class="sk-th"></div>
-                            <div class="sk-th"></div>
-                            <div class="sk-th"></div>
-                            <div class="sk-th"></div>
-                        </div>
-                        <div class="sk-table-body-rows">
-                            <div class="sk-tr"><div class="sk-td"></div><div class="sk-td"></div><div class="sk-td"></div><div class="sk-td"></div></div>
-                            <div class="sk-tr"><div class="sk-td"></div><div class="sk-td"></div><div class="sk-td"></div><div class="sk-td"></div></div>
-                            <div class="sk-tr"><div class="sk-td"></div><div class="sk-td"></div><div class="sk-td"></div><div class="sk-td"></div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skeleton-interactive-placeholder border-top-none">
-                    <div class="placeholder-icon-wrap">
-                        <i data-lucide="file-spreadsheet" class="placeholder-icon text-purple"></i>
-                    </div>
-                    <p class="placeholder-info-text">原始資料載入與 CSV 匯出</p>
-                    <span class="placeholder-subtext">第二階段將提供互動式表格排序、篩選，以及一鍵點擊 CSV 匯出功能</span>
-                </div>
-            </div>
         </section>
 
         <!-- CRISP-DM Section (Blank/Skeleton) -->
@@ -504,62 +426,6 @@
                 <p class="section-desc">遵循跨行業資料探勘標準流程，確保資料分析與模型部署的嚴謹度。</p>
             </div>
 
-            <div class="crisp-grid">
-                <!-- CRISP Step 1 -->
-                <div class="topic-glass-card crisp-card">
-                    <div class="crisp-header">
-                        <span class="crisp-num">01</span>
-                        <h4 class="crisp-title">商業理解</h4>
-                    </div>
-                    <p class="crisp-desc">定義模型商業目標與核心評估指標。</p>
-                    <div class="crisp-skeleton-indicator"></div>
-                </div>
-                <!-- CRISP Step 2 -->
-                <div class="topic-glass-card crisp-card">
-                    <div class="crisp-header">
-                        <span class="crisp-num">02</span>
-                        <h4 class="crisp-title">資料理解</h4>
-                    </div>
-                    <p class="crisp-desc">搜集原始數據、進行探索性資料分析 (EDA)。</p>
-                    <div class="crisp-skeleton-indicator"></div>
-                </div>
-                <!-- CRISP Step 3 -->
-                <div class="topic-glass-card crisp-card">
-                    <div class="crisp-header">
-                        <span class="crisp-num">03</span>
-                        <h4 class="crisp-title">資料準備</h4>
-                    </div>
-                    <p class="crisp-desc">資料清洗、特徵工程與離群值處理。</p>
-                    <div class="crisp-skeleton-indicator"></div>
-                </div>
-                <!-- CRISP Step 4 -->
-                <div class="topic-glass-card crisp-card">
-                    <div class="crisp-header">
-                        <span class="crisp-num">04</span>
-                        <h4 class="crisp-title">建立模型</h4>
-                    </div>
-                    <p class="crisp-desc">挑選演算法、劃分訓練集並訓練模型參數。</p>
-                    <div class="crisp-skeleton-indicator"></div>
-                </div>
-                <!-- CRISP Step 5 -->
-                <div class="topic-glass-card crisp-card">
-                    <div class="crisp-header">
-                        <span class="crisp-num">05</span>
-                        <h4 class="crisp-title">模型評估</h4>
-                    </div>
-                    <p class="crisp-desc">測試集驗證、誤差分析與殘差圖表檢視。</p>
-                    <div class="crisp-skeleton-indicator"></div>
-                </div>
-                <!-- CRISP Step 6 -->
-                <div class="topic-glass-card crisp-card">
-                    <div class="crisp-header">
-                        <span class="crisp-num">06</span>
-                        <h4 class="crisp-title">部署整合</h4>
-                    </div>
-                    <p class="crisp-desc">串接 Python 後端、部署互動式分析面板。</p>
-                    <div class="crisp-skeleton-indicator"></div>
-                </div>
-            </div>
         </section>
 
         <!-- Streamlit Integration Section (Blank/Skeleton) -->
