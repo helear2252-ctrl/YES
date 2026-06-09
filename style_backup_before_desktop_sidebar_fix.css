@@ -2383,33 +2383,3 @@ body {
         flex-basis: 68%;
     }
 }
-
-@media (min-width: 769px) {
-    #algorithms .algo-showcase-container {
-        display: grid !important;
-        grid-template-columns: clamp(260px, 26vw, 320px) minmax(0, 1fr) !important;
-        gap: 28px;
-        align-items: start;
-    }
-
-    #algorithms .algo-buttons-card {
-        width: 100%;
-        margin-bottom: 0;
-    }
-
-    #algorithms .algo-buttons-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        grid-template-columns: none !important;
-        gap: 12px;
-    }
-
-    #algorithms .algo-btn {
-        flex: none;
-    }
-
-    #algorithms .algo-content-display {
-        width: 100%;
-        min-width: 0;
-    }
-}
