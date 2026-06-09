@@ -2321,43 +2321,14 @@ body {
 }
 
 #algorithms .algo-buttons-card {
-    padding: 16px;
+    padding: 20px;
     margin-bottom: 0;
 }
 
 #algorithms .algo-buttons-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-#algorithms .algo-btn {
-    min-height: 48px;
-    padding: 10px 16px;
-    gap: 10px;
-    border-radius: 999px;
-    text-align: left;
-    white-space: nowrap;
-    transform: translateY(0);
-}
-
-#algorithms .algo-btn:hover {
-    transform: translateY(-1px);
-}
-
-#algorithms .algo-num {
-    width: 26px;
-    height: 26px;
-    font-size: 0.74rem;
-}
-
-#algorithms .algo-name {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 0.88rem;
-    line-height: 1.2;
+    gap: 12px;
 }
 
 #algorithms .algo-content-display {
@@ -2379,7 +2350,6 @@ body {
     #algorithms .algo-buttons-card {
         margin-bottom: 24px;
         overflow: hidden;
-        padding: 14px;
     }
 
     #algorithms .algo-buttons-grid {
@@ -2388,18 +2358,15 @@ body {
         overscroll-behavior-x: contain;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        gap: 10px;
-        padding: 2px 22% 8px 2px;
+        padding: 2px 26% 8px 2px;
         scrollbar-width: thin;
     }
 
     #algorithms .algo-btn {
-        flex: 0 0 clamp(132px, 31vw, 240px);
+        flex: 0 0 66%;
         min-width: 0;
-        min-height: 50px;
-        padding: 10px 14px;
+        min-height: 88px;
         scroll-snap-align: start;
-        scroll-snap-stop: normal;
     }
 }
 
@@ -2413,53 +2380,36 @@ body {
     }
 
     #algorithms .algo-btn {
-        flex-basis: clamp(128px, 35vw, 164px);
-        min-height: 48px;
+        flex-basis: 68%;
     }
 }
 
 @media (min-width: 769px) {
     #algorithms .algo-showcase-container {
         display: grid !important;
-        grid-template-columns: minmax(312px, 320px) minmax(0, 1fr) !important;
-        gap: 24px;
-        align-items: stretch;
+        grid-template-columns: clamp(260px, 26vw, 320px) minmax(0, 1fr) !important;
+        gap: 28px;
+        align-items: start;
     }
 
     #algorithms .algo-buttons-card {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        align-self: stretch;
         width: 100%;
-        padding: 12px;
-        margin-top: 28px;
         margin-bottom: 0;
     }
 
     #algorithms .algo-buttons-grid {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center;
-        flex: 1;
         grid-template-columns: none !important;
-        gap: 10px;
+        gap: 12px;
     }
 
     #algorithms .algo-btn {
         flex: none;
-        min-height: 48px;
-        padding: 10px 12px;
     }
 
     #algorithms .algo-content-display {
-        align-self: stretch;
         width: 100%;
         min-width: 0;
-    }
-
-    #algorithms .algo-name {
-        overflow: visible;
-        text-overflow: clip;
     }
 }

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>機器學習十大演算法資料分析作品集</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons & Chart.js -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Toast Notification Container (For "內容將於下一階段加入") -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon"><i data-lucide="brain-circuit"></i></span>
+                <span class="logo-text">ML Portfolio</span>
+            </a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#algorithms" class="nav-link">Algorithms</a>
+                <a href="#interactive-demo" class="nav-link">Interactive Demo</a>
+                <a href="#outliers" class="nav-link">Outliers</a>
+                <a href="#crisp-dm" class="nav-link">CRISP-DM</a>
+                <a href="#streamlit" class="nav-link">Streamlit</a>
+            </div>
+
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div class="hero-glow-container">
+            <div class="hero-glow-blue"></div>
+            <div class="hero-glow-purple"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge-wrap">
+                    <span class="hero-mini-badge"><i data-lucide="line-chart"></i> Data Science Portfolio</span>
+                </div>
+                <h1 class="hero-title">機器學習十大演算法<br><span class="gradient-text-premium">資料分析作品集</span></h1>
+                <p class="hero-subtitle">Linear Regression × Machine Learning × CRISP-DM × Data Visualization</p>
+                
+                <!-- Highlight red focus text -->
+                <div class="hero-highlight-red-box">
+                    <div class="red-focus-badge">
+                        <i data-lucide="zap"></i>
+                        <span>焦點技術</span>
+                    </div>
+                    <span class="highlight-red-content-text">
+                        互動式模型展示 / Outlier 分析 / CSV 匯出 / Streamlit 後端整合
+                    </span>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#interactive-demo" class="btn btn-primary btn-interactive hero-btn-main">
+                        <span>前往互動分析</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#streamlit" class="btn btn-secondary btn-streamlit-trigger hero-btn-sub">
+                        <span>開啟 Streamlit 後端</span>
+                        <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-cards-stack">
+                    <!-- Card 1: Regression Demo -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box blue">
+                            <i data-lucide="sliders"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Regression Demo</h3>
+                            <p class="card-desc">即時變更參數擬合迴歸線與觀察拉扯效應</p>
+                        </div>
+                        <div class="card-status-dot blue"></div>
+                    </div>
+                    
+                    <!-- Card 2: Outlier Detection -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box red">
+                            <i data-lucide="alert-octagon"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Outlier Detection</h3>
+                            <p class="card-desc">使用 Cooks Distance 等演算法偵測極端值</p>
+                        </div>
+                        <div class="card-status-dot red animate-pulse"></div>
+                    </div>
+                    
+                    <!-- Card 3: CSV Export -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box purple">
+                            <i data-lucide="file-spreadsheet"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">CSV Export</h3>
+                            <p class="card-desc">支援一鍵導出目前調整與預測後之完整資料集</p>
+                        </div>
+                        <div class="card-status-dot purple"></div>
+                    </div>
+                    
+                    <!-- Card 4: Streamlit Backend -->
+                    <div class="analysis-feature-card">
+                        <div class="card-icon-box gray">
+                            <i data-lucide="server"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Streamlit Backend</h3>
+                            <p class="card-desc">結合 Python 機器學習運算實力之後端引擎整合</p>
+                        </div>
+                        <div class="card-status-dot gray"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- Algorithms Section -->
+        <section id="algorithms" class="topic-section-card">
+            <div class="section-header">
+                <span class="section-badge"><i data-lucide="list"></i> Algorithms Guide</span>
+                <h2 class="section-title">十大機器學習演算法與核心指南</h2>
+                <p class="section-desc">點擊下方按鈕以切換檢視不同的機器學習演算法核心架構與分析重點。</p>
+            </div>
+
+            <!-- Algorithm Grid & Content Showcase -->
+            <div class="algo-showcase-container">
+                <div class="algo-buttons-card">
+                    <div class="algo-buttons-grid">
+                        <button class="algo-btn active" data-id="1" data-index="0">
+                            <span class="algo-num">01</span>
+                            <span class="algo-name">線性迴歸</span>
+                        </button>
+                        <button class="algo-btn" data-id="2" data-index="1">
+                            <span class="algo-num">02</span>
+                            <span class="algo-name">邏輯迴歸</span>
+                        </button>
+                        <button class="algo-btn" data-id="3" data-index="2">
+                            <span class="algo-num">03</span>
+                            <span class="algo-name">決策樹</span>
+                        </button>
+                        <button class="algo-btn" data-id="4" data-index="3">
+                            <span class="algo-num">04</span>
+                            <span class="algo-name">隨機森林</span>
+                        </button>
+                        <button class="algo-btn" data-id="5" data-index="4">
+                            <span class="algo-num">05</span>
+                            <span class="algo-name">梯度提升樹</span>
+                        </button>
+                        <button class="algo-btn" data-id="6" data-index="5">
+                            <span class="algo-num">06</span>
+                            <span class="algo-name">支持向量機</span>
+                        </button>
+                        <button class="algo-btn" data-id="7" data-index="6">
+                            <span class="algo-num">07</span>
+                            <span class="algo-name">K-近鄰演算法</span>
+                        </button>
+                        <button class="algo-btn" data-id="8" data-index="7">
+                            <span class="algo-num">08</span>
+                            <span class="algo-name">單純貝氏分類器 Naive Bayes</span>
+                        </button>
+                        <button class="algo-btn" data-id="9" data-index="8">
+                            <span class="algo-num">09</span>
+                            <span class="algo-name">K-平均演算法 K-Means Clustering</span>
+                        </button>
+                        <button class="algo-btn" data-id="10" data-index="9">
+                            <span class="algo-num">10</span>
+                            <span class="algo-name">主成分分析 PCA</span>
+                        </button>
+                        <button class="algo-btn algo-btn-special" data-id="11" data-index="10">
+                            <span class="algo-num"><i data-lucide="git-compare"></i></span>
+                            <span class="algo-name">綜合比較與核心評估方法總覽</span>
+                        </button>
+                        <button class="algo-btn algo-btn-special" data-id="12" data-index="11">
+                            <span class="algo-num"><i data-lucide="trending-up"></i></span>
+                            <span class="algo-name">機器學習進階學習路徑指南</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Display Panel -->
+                <div class="algo-content-display topic-glass-card" id="algo-content-display">
+                    <!-- Content will be injected dynamically by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="interactive-demo" class="topic-section-card">
+            <div class="section-header">
+                <span class="section-badge"><i data-lucide="sliders"></i> Interactive Showcase</span>
+                <h2 class="section-title">Interactive Demo</h2>
+                <p class="section-desc">互動式線性迴歸參數調校與即時預測展示區，調校滑桿即可即時觀察離群值對迴歸線的拉扯效應。</p>
+            </div>
+            
+            <div class="demo-container-card">
+                <div class="demo-inner-flex">
+                    <!-- Left: Control Panel -->
+                    <div class="demo-control-panel">
+                        <h3 class="panel-title"><i data-lucide="settings"></i> 控制面板</h3>
+                        
+                        <!-- Control 1: Sample Size -->
+                        <div class="control-group">
+                            <div class="control-label-wrap">
+                                <label for="range-samples">樣本數 (Sample Size)</label>
+                                <span class="control-value" id="val-samples">80</span>
+                            </div>
+                            <input type="range" id="range-samples" min="20" max="200" value="80" class="slider-input">
+                        </div>
+                        
+                        <!-- Control 2: Slope -->
+                        <div class="control-group">
+                            <div class="control-label-wrap">
+                                <label for="range-slope">斜率 (Slope)</label>
+                                <span class="control-value" id="val-slope">2.5</span>
+                            </div>
+                            <input type="range" id="range-slope" min="-10" max="10" step="0.1" value="2.5" class="slider-input">
+                        </div>
+                        
+                        <!-- Control 3: Intercept -->
+                        <div class="control-group">
+                            <div class="control-label-wrap">
+                                <label for="range-intercept">截距 (Intercept)</label>
+                                <span class="control-value" id="val-intercept">10</span>
+                            </div>
+                            <input type="range" id="range-intercept" min="-30" max="50" step="1" value="10" class="slider-input">
+                        </div>
+                        
+                        <!-- Control 4: Noise -->
+                        <div class="control-group">
+                            <div class="control-label-wrap">
+                                <label for="range-noise">雜訊強度 (Noise)</label>
+                                <span class="control-value" id="val-noise">15</span>
+                            </div>
+                            <input type="range" id="range-noise" min="0" max="50" step="1" value="15" class="slider-input">
+                        </div>
+                        
+                        <!-- Control 5: Outliers -->
+                        <div class="control-group">
+                            <div class="control-label-wrap">
+                                <label for="range-outliers">Outlier 數量</label>
+                                <span class="control-value highlight-red-text" id="val-outliers">3</span>
+                            </div>
+                            <input type="range" id="range-outliers" min="0" max="15" step="1" value="3" class="slider-input">
+                        </div>
+
+                        <!-- Stats Display Inside Control Panel -->
+                        <div class="demo-fitted-stats">
+                            <div class="fit-stat">
+                                <span class="fit-stat-lbl">擬合斜率 (Fitted m)</span>
+                                <span class="fit-stat-val text-purple" id="fit-slope">0.00</span>
+                            </div>
+                            <div class="fit-stat">
+                                <span class="fit-stat-lbl">擬合截距 (Fitted b)</span>
+                                <span class="fit-stat-val text-purple" id="fit-intercept">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Chart Pane -->
+                    <div class="demo-chart-pane">
+                        <div class="chart-wrapper">
+                            <canvas id="regression-chart"></canvas>
+                        </div>
+                        <div class="metrics-grid" id="metricsGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top 10 Outlier Observations Section (Blank/Skeleton) -->
+        <section id="outliers" class="topic-section-card">
+            <div class="section-header">
+                <span class="section-badge badge-red"><i data-lucide="zap"></i> Anomaly Detection</span>
+                <h2 class="section-title">Top 10 Outlier Observations</h2>
+                <div class="analysis-table-card">
+                    <div class="table-actions-header">
+                        <div class="table-meta">Sorted by absolute error</div>
+                        <span class="highlight-red-badge">Top 10</span>
+                    </div>
+                    <div class="analysis-table-wrapper">
+                        <table class="analysis-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>X</th>
+                                    <th>Actual Y</th>
+                                    <th>Predicted Y</th>
+                                    <th>Error</th>
+                                    <th>Is Outlier</th>
+                                </tr>
+                            </thead>
+                            <tbody id="outlierTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <p class="section-desc">自動偵測並標記資料集中偏離常態的極端值（離群值）。</p>
+            </div>
+
+        </section>
+
+        <!-- Raw Data Section (Blank/Skeleton) -->
+        <section id="raw-data" class="topic-section-card">
+            <div class="section-header">
+                <span class="section-badge"><i data-lucide="database"></i> Data Management</span>
+                <h2 class="section-title">Raw Data Source</h2>
+                <div class="analysis-table-card">
+                    <div class="raw-data-toolbar">
+                        <div class="table-meta">Current generated dataset</div>
+                        <button class="btn btn-primary download-csv-btn" id="downloadCsvBtn">
+                            <i data-lucide="download"></i>
+                            <span>&#19979;&#36617;&#30446;&#21069;&#36039;&#26009; CSV</span>
+                        </button>
+                    </div>
+                    <div class="analysis-table-wrapper raw-data-table-wrapper">
+                        <table class="analysis-table">
+                            <thead>
+                                <tr>
+                                    <th>X</th>
+                                    <th>Actual Y</th>
+                                    <th>Predicted Y</th>
+                                    <th>Error</th>
+                                    <th>Is Outlier</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rawDataTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <p class="section-desc">檢視、過濾、並導出所使用的原始分析數據集。</p>
+            </div>
+
+        </section>
+
+        <!-- CRISP-DM Section (Blank/Skeleton) -->
+        <section id="crisp-dm" class="topic-section-card">
+            <div class="section-header">
+                <span class="section-badge"><i data-lucide="git-branch"></i> Methodology</span>
+                <h2 class="section-title">CRISP-DM Process Walkthrough</h2>
+                <div class="crisp-process-grid">
+                    <div class="crisp-process-card">
+                        <div class="crisp-header">
+                            <span class="crisp-num">01</span>
+                            <h4 class="crisp-title">Business Understanding</h4>
+                        </div>
+                        <p class="crisp-desc">定義資料分析目標與商業問題。</p>
+                        <div class="crisp-project-use">
+                            <span>本專案用途</span>
+                            <p>建立一個能展示機器學習、互動分析與資料視覺化能力的作品集網站。</p>
+                        </div>
+                    </div>
+                    <div class="crisp-process-card">
+                        <div class="crisp-header">
+                            <span class="crisp-num">02</span>
+                            <h4 class="crisp-title">Data Understanding</h4>
+                        </div>
+                        <p class="crisp-desc">觀察資料分布、資料品質與異常值。</p>
+                        <div class="crisp-project-use">
+                            <span>本專案用途</span>
+                            <p>透過互動式線性迴歸資料，觀察樣本數、noise 與 outlier 對資料型態的影響。</p>
+                        </div>
+                    </div>
+                    <div class="crisp-process-card">
+                        <div class="crisp-header">
+                            <span class="crisp-num">03</span>
+                            <h4 class="crisp-title">Data Preparation</h4>
+                        </div>
+                        <p class="crisp-desc">資料清理、特徵整理與資料轉換。</p>
+                        <div class="crisp-project-use">
+                            <span>本專案用途</span>
+                            <p>前端即時產生 X、Actual Y、Predicted Y、Error 與 Is Outlier 欄位。</p>
+                        </div>
+                    </div>
+                    <div class="crisp-process-card">
+                        <div class="crisp-header">
+                            <span class="crisp-num">04</span>
+                            <h4 class="crisp-title">Modeling</h4>
+                        </div>
+                        <p class="crisp-desc">建立模型並觀察模型輸出。</p>
+                        <div class="crisp-project-use">
+                            <span>本專案用途</span>
+                            <p>使用線性迴歸概念建立回歸線，觀察斜率、截距與噪音如何改變結果。</p>
+                        </div>
+                    </div>
+                    <div class="crisp-process-card">
+                        <div class="crisp-header">
+                            <span class="crisp-num">05</span>
+                            <h4 class="crisp-title">Evaluation</h4>
+                        </div>
+                        <p class="crisp-desc">使用指標評估模型表現。</p>
+                        <div class="crisp-project-use">
+                            <span>本專案用途</span>
+                            <p>使用 MAE、MSE、RMSE、R² 與 Top 10 Outlier Observations 評估預測結果。</p>
+                        </div>
+                    </div>
+                    <div class="crisp-process-card">
+                        <div class="crisp-header">
+                            <span class="crisp-num">06</span>
+                            <h4 class="crisp-title">Deployment</h4>
+                        </div>
+                        <p class="crisp-desc">將分析成果部署成可互動使用的系統。</p>
+                        <div class="crisp-project-use">
+                            <span>本專案用途</span>
+                            <p>前端可部署到 GitHub Pages，未來可串接 Streamlit 後端。</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="section-desc">遵循跨行業資料探勘標準流程，確保資料分析與模型部署的嚴謹度。</p>
+            </div>
+
+        </section>
+
+        <!-- Streamlit Integration Section (Blank/Skeleton) -->
+        <section id="streamlit" class="topic-section-card">
+            <div class="section-header">
+                <span class="section-badge"><i data-lucide="server"></i> Backend Architecture</span>
+                <h2 class="section-title">Streamlit Backend Integration</h2>
+                <p class="section-desc">結合 Python 機器學習運算實力與極簡前端互動介面。</p>
+            </div>
+
+            <div class="topic-glass-card streamlit-integration-card">
+                <div class="streamlit-flow">
+                    <div class="flow-node">
+                        <div class="node-icon bg-blue-light"><i data-lucide="file-code" class="text-blue"></i></div>
+                        <span class="node-label">Vanilla Frontend</span>
+                    </div>
+                    <div class="flow-connector"><i data-lucide="arrow-right"></i></div>
+                    <div class="flow-node highlight">
+                        <div class="node-icon bg-purple-light"><i data-lucide="cpu" class="text-purple"></i></div>
+                        <span class="node-label">Streamlit Engine</span>
+                    </div>
+                    <div class="flow-connector"><i data-lucide="arrow-right"></i></div>
+                    <div class="flow-node">
+                        <div class="node-icon bg-red-light"><i data-lucide="line-chart" class="text-red"></i></div>
+                        <span class="node-label">ML Calculations</span>
+                    </div>
+                </div>
+                <div class="skeleton-interactive-placeholder border-top-none py-6">
+                    <div class="placeholder-icon-wrap">
+                        <i data-lucide="radio" class="placeholder-icon text-blue animate-pulse"></i>
+                    </div>
+                    <p class="placeholder-info-text">Streamlit API 連線狀態：未啟用</p>
+                    <span class="placeholder-subtext">第二階段中，此處將顯示後端 API 伺服器狀態，並提供啟動與連線面板</span>
+                    <button class="btn btn-secondary btn-streamlit-trigger mt-4">
+                        <i data-lucide="power"></i> 啟動連線測試 (下一階段加入)
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon"><i data-lucide="brain-circuit"></i></span>
+                <span class="footer-title">Machine Learning Portfolio</span>
+            </div>
+            <p class="footer-tagline">整合十大演算法、資料清洗與 CRISP-DM 流程的現代化互動式資料分析作品集。</p>
+            <div class="footer-divider"></div>
+            <p class="footer-copyright">&copy; 2026 Machine Learning Portfolio. All Rights Reserved. Designed with premium aesthetics.</p>
+        </div>
+    </footer>
+
+    <!-- Script Injection -->
+    <script src="script.js"></script>
+</body>
+</html>
