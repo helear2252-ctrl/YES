@@ -5,10 +5,49 @@
         lucide.createIcons();
     }
 
-    /* --- Navbar Mobile Toggle --- */
+    /* --- Navbar Mobile Toggle & Page Switching --- */
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pageSections = document.querySelectorAll('.page-section');
+
+    function closeMobileMenu() {
+        if (!navMenu || !menuIcon) return;
+        navMenu.classList.remove('open');
+        menuIcon.setAttribute('data-lucide', 'menu');
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+
+    function switchPage(pageId) {
+        const targetSection = document.getElementById(pageId);
+        if (!targetSection) return;
+
+        pageSections.forEach(section => {
+            section.classList.toggle('active', section.id === pageId);
+        });
+
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.page === pageId);
+        });
+
+        if (pageId === 'interactive-demo' && regressionChart) {
+            requestAnimationFrame(() => {
+                regressionChart.resize();
+                regressionChart.update('none');
+            });
+        }
+    }
+
+    document.querySelectorAll('[data-page]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchPage(trigger.dataset.page);
+            closeMobileMenu();
+        });
+    });
 
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
@@ -27,43 +66,10 @@
             }
         });
 
-        // Close menu when clicking a nav link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('open');
-                menuIcon.setAttribute('data-lucide', 'menu');
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
-            });
-        });
     }
 
-    /* --- Active Navbar Link on Scroll --- */
-    const sections = document.querySelectorAll('section, header');
-    const navLinks = document.querySelectorAll('.nav-link');
-
+    /* --- Navbar Background on Scroll --- */
     window.addEventListener('scroll', () => {
-        let current = '';
-        const scrollPosition = window.scrollY + 120; // Offset for sticky navbar
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-
-        // Add scrolled background effect to navbar
         const navbar = document.getElementById('navbar');
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -251,23 +257,6 @@
     algoButtons.forEach((button, idx) => {
         button.addEventListener('click', () => {
             renderTopic(idx);
-            if (window.innerWidth <= 768) {
-                requestAnimationFrame(() => {
-                    const topicContent =
-                        document.getElementById('topicContent') ||
-                        algoContentDisplay;
-
-                    if (topicContent) {
-                        const offset = 90;
-                        const targetPosition = topicContent.getBoundingClientRect().top + window.scrollY - offset;
-
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            }
         });
     });
 
@@ -642,12 +631,7 @@
     const actionButtons = document.querySelectorAll('.btn-interactive, .btn-streamlit-trigger');
     actionButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const href = btn.getAttribute('href');
-            // If it is just an anchor link, let standard scroll happen but show toast if it's streamlit
-            if (href === '#interactive-demo') {
-                // Let page scroll naturally
-                return;
-            }
+            if (btn.dataset.page) return;
             e.preventDefault();
             showToast('?批捆撠銝??挾?');
         });

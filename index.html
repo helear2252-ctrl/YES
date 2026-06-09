@@ -21,18 +21,17 @@
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
+            <a href="#" class="nav-logo" data-page="home">
                 <span class="logo-icon"><i data-lucide="brain-circuit"></i></span>
                 <span class="logo-text">ML Portfolio</span>
             </a>
             
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#algorithms" class="nav-link">Algorithms</a>
-                <a href="#interactive-demo" class="nav-link">Interactive Demo</a>
-                <a href="#outliers" class="nav-link">Outliers</a>
-                <a href="#crisp-dm" class="nav-link">CRISP-DM</a>
-                <a href="#streamlit" class="nav-link">Streamlit</a>
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="algorithms">Algorithms</a>
+                <a href="#" class="nav-link" data-page="interactive-demo">Interactive Demo</a>
+                <a href="#" class="nav-link" data-page="crispdm">CRISP-DM</a>
+                <a href="#" class="nav-link" data-page="streamlit">Streamlit</a>
             </div>
 
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
@@ -42,7 +41,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="hero-section">
+    <header id="home" class="hero-section page-section active">
         <div class="hero-glow-container">
             <div class="hero-glow-blue"></div>
             <div class="hero-glow-purple"></div>
@@ -67,11 +66,11 @@
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#interactive-demo" class="btn btn-primary btn-interactive hero-btn-main">
+                    <a href="#" class="btn btn-primary btn-interactive hero-btn-main" data-page="interactive-demo">
                         <span>前往互動分析</span>
                         <i data-lucide="arrow-right"></i>
                     </a>
-                    <a href="#streamlit" class="btn btn-secondary btn-streamlit-trigger hero-btn-sub">
+                    <a href="#" class="btn btn-secondary btn-streamlit-trigger hero-btn-sub" data-page="streamlit">
                         <span>開啟 Streamlit 後端</span>
                         <i data-lucide="external-link"></i>
                     </a>
@@ -136,7 +135,7 @@
     <main class="main-content">
 
         <!-- Algorithms Section -->
-        <section id="algorithms" class="topic-section-card">
+        <section id="algorithms" class="topic-section-card page-section">
             <div class="section-header">
                 <span class="section-badge"><i data-lucide="list"></i> Algorithms Guide</span>
                 <h2 class="section-title">十大機器學習演算法與核心指南</h2>
@@ -205,155 +204,148 @@
             </div>
         </section>
 
-        <!-- Interactive Demo Section -->
-        <section id="interactive-demo" class="topic-section-card">
+        <!-- Interactive Demo & Outliers Section -->
+        <section id="interactive-demo" class="topic-section-card page-section">
             <div class="section-header">
                 <span class="section-badge"><i data-lucide="sliders"></i> Interactive Showcase</span>
-                <h2 class="section-title">Interactive Demo</h2>
+                <h2 class="section-title">Interactive Demo &amp; Outliers</h2>
                 <p class="section-desc">互動式線性迴歸參數調校與即時預測展示區，調校滑桿即可即時觀察離群值對迴歸線的拉扯效應。</p>
             </div>
-            
-            <div class="demo-container-card">
-                <div class="demo-inner-flex">
-                    <!-- Left: Control Panel -->
-                    <div class="demo-control-panel">
-                        <h3 class="panel-title"><i data-lucide="settings"></i> 控制面板</h3>
-                        
-                        <!-- Control 1: Sample Size -->
-                        <div class="control-group">
-                            <div class="control-label-wrap">
-                                <label for="range-samples">樣本數 (Sample Size)</label>
-                                <span class="control-value" id="val-samples">80</span>
-                            </div>
-                            <input type="range" id="range-samples" min="20" max="200" value="80" class="slider-input">
-                        </div>
-                        
-                        <!-- Control 2: Slope -->
-                        <div class="control-group">
-                            <div class="control-label-wrap">
-                                <label for="range-slope">斜率 (Slope)</label>
-                                <span class="control-value" id="val-slope">2.5</span>
-                            </div>
-                            <input type="range" id="range-slope" min="-10" max="10" step="0.1" value="2.5" class="slider-input">
-                        </div>
-                        
-                        <!-- Control 3: Intercept -->
-                        <div class="control-group">
-                            <div class="control-label-wrap">
-                                <label for="range-intercept">截距 (Intercept)</label>
-                                <span class="control-value" id="val-intercept">10</span>
-                            </div>
-                            <input type="range" id="range-intercept" min="-30" max="50" step="1" value="10" class="slider-input">
-                        </div>
-                        
-                        <!-- Control 4: Noise -->
-                        <div class="control-group">
-                            <div class="control-label-wrap">
-                                <label for="range-noise">雜訊強度 (Noise)</label>
-                                <span class="control-value" id="val-noise">15</span>
-                            </div>
-                            <input type="range" id="range-noise" min="0" max="50" step="1" value="15" class="slider-input">
-                        </div>
-                        
-                        <!-- Control 5: Outliers -->
-                        <div class="control-group">
-                            <div class="control-label-wrap">
-                                <label for="range-outliers">Outlier 數量</label>
-                                <span class="control-value highlight-red-text" id="val-outliers">3</span>
-                            </div>
-                            <input type="range" id="range-outliers" min="0" max="15" step="1" value="3" class="slider-input">
-                        </div>
 
-                        <!-- Stats Display Inside Control Panel -->
-                        <div class="demo-fitted-stats">
-                            <div class="fit-stat">
-                                <span class="fit-stat-lbl">擬合斜率 (Fitted m)</span>
-                                <span class="fit-stat-val text-purple" id="fit-slope">0.00</span>
+            <div class="demo-outlier-layout">
+                <div class="demo-analysis-card">
+                    <div class="demo-main-grid">
+                            <!-- Left: Control Panel -->
+                            <div class="demo-control-panel">
+                                <h3 class="panel-title"><i data-lucide="settings"></i> 控制面板</h3>
+
+                                <!-- Control 1: Sample Size -->
+                                <div class="control-group">
+                                    <div class="control-label-wrap">
+                                        <label for="range-samples">樣本數 (Sample Size)</label>
+                                        <span class="control-value" id="val-samples">80</span>
+                                    </div>
+                                    <input type="range" id="range-samples" min="20" max="200" value="80" class="slider-input">
+                                </div>
+
+                                <!-- Control 2: Slope -->
+                                <div class="control-group">
+                                    <div class="control-label-wrap">
+                                        <label for="range-slope">斜率 (Slope)</label>
+                                        <span class="control-value" id="val-slope">2.5</span>
+                                    </div>
+                                    <input type="range" id="range-slope" min="-10" max="10" step="0.1" value="2.5" class="slider-input">
+                                </div>
+
+                                <!-- Control 3: Intercept -->
+                                <div class="control-group">
+                                    <div class="control-label-wrap">
+                                        <label for="range-intercept">截距 (Intercept)</label>
+                                        <span class="control-value" id="val-intercept">10</span>
+                                    </div>
+                                    <input type="range" id="range-intercept" min="-30" max="50" step="1" value="10" class="slider-input">
+                                </div>
+
+                                <!-- Control 4: Noise -->
+                                <div class="control-group">
+                                    <div class="control-label-wrap">
+                                        <label for="range-noise">雜訊強度 (Noise)</label>
+                                        <span class="control-value" id="val-noise">15</span>
+                                    </div>
+                                    <input type="range" id="range-noise" min="0" max="50" step="1" value="15" class="slider-input">
+                                </div>
+
+                                <!-- Control 5: Outliers -->
+                                <div class="control-group">
+                                    <div class="control-label-wrap">
+                                        <label for="range-outliers">Outlier 數量</label>
+                                        <span class="control-value highlight-red-text" id="val-outliers">3</span>
+                                    </div>
+                                    <input type="range" id="range-outliers" min="0" max="15" step="1" value="3" class="slider-input">
+                                </div>
+
+                                <!-- Stats Display Inside Control Panel -->
+                                <div class="demo-fitted-stats">
+                                    <div class="fit-stat">
+                                        <span class="fit-stat-lbl">擬合斜率 (Fitted m)</span>
+                                        <span class="fit-stat-val text-purple" id="fit-slope">0.00</span>
+                                    </div>
+                                    <div class="fit-stat">
+                                        <span class="fit-stat-lbl">擬合截距 (Fitted b)</span>
+                                        <span class="fit-stat-val text-purple" id="fit-intercept">0.00</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="fit-stat">
-                                <span class="fit-stat-lbl">擬合截距 (Fitted b)</span>
-                                <span class="fit-stat-val text-purple" id="fit-intercept">0.00</span>
+
+                            <!-- Right: Chart Pane -->
+                            <div class="demo-chart-pane">
+                                <div class="chart-container chart-wrapper">
+                                    <canvas id="regression-chart"></canvas>
+                                </div>
                             </div>
+                    </div>
+                    <div class="metrics-grid" id="metricsGrid"></div>
+                </div>
+
+                <div class="outlier-tables-row" aria-label="Outliers Analysis">
+                    <div class="analysis-table-card outlier-table-card outlier-observations-card">
+                        <div class="table-actions-header">
+                            <div>
+                                <h4 class="analysis-card-title">Top 10 Outlier Observations</h4>
+                                <div class="table-meta">Sorted by absolute error</div>
+                            </div>
+                            <span class="highlight-red-badge">Top 10</span>
+                        </div>
+                        <div class="table-wrapper analysis-table-wrapper">
+                            <table class="analysis-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>X</th>
+                                        <th>Actual Y</th>
+                                        <th>Predicted Y</th>
+                                        <th>Error</th>
+                                        <th>Is Outlier</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="outlierTableBody"></tbody>
+                            </table>
                         </div>
                     </div>
-                    
-                    <!-- Right: Chart Pane -->
-                    <div class="demo-chart-pane">
-                        <div class="chart-wrapper">
-                            <canvas id="regression-chart"></canvas>
+
+                    <div class="analysis-table-card outlier-table-card raw-data-source-card">
+                        <div class="raw-data-toolbar">
+                            <div>
+                                <h4 class="analysis-card-title">Raw Data Source</h4>
+                                <div class="table-meta">Current generated dataset</div>
+                            </div>
+                            <button class="btn btn-primary download-csv-btn" id="downloadCsvBtn">
+                                <i data-lucide="download"></i>
+                                <span>&#19979;&#36617;&#30446;&#21069;&#36039;&#26009; CSV</span>
+                            </button>
                         </div>
-                        <div class="metrics-grid" id="metricsGrid"></div>
+                        <div class="table-wrapper analysis-table-wrapper raw-data-table-wrapper">
+                            <table class="analysis-table">
+                                <thead>
+                                    <tr>
+                                        <th>X</th>
+                                        <th>Actual Y</th>
+                                        <th>Predicted Y</th>
+                                        <th>Error</th>
+                                        <th>Is Outlier</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rawDataTableBody"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Top 10 Outlier Observations Section (Blank/Skeleton) -->
-        <section id="outliers" class="topic-section-card">
-            <div class="section-header">
-                <span class="section-badge badge-red"><i data-lucide="zap"></i> Anomaly Detection</span>
-                <h2 class="section-title">Top 10 Outlier Observations</h2>
-                <div class="analysis-table-card">
-                    <div class="table-actions-header">
-                        <div class="table-meta">Sorted by absolute error</div>
-                        <span class="highlight-red-badge">Top 10</span>
-                    </div>
-                    <div class="analysis-table-wrapper">
-                        <table class="analysis-table">
-                            <thead>
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>X</th>
-                                    <th>Actual Y</th>
-                                    <th>Predicted Y</th>
-                                    <th>Error</th>
-                                    <th>Is Outlier</th>
-                                </tr>
-                            </thead>
-                            <tbody id="outlierTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-                <p class="section-desc">自動偵測並標記資料集中偏離常態的極端值（離群值）。</p>
-            </div>
-
-        </section>
-
-        <!-- Raw Data Section (Blank/Skeleton) -->
-        <section id="raw-data" class="topic-section-card">
-            <div class="section-header">
-                <span class="section-badge"><i data-lucide="database"></i> Data Management</span>
-                <h2 class="section-title">Raw Data Source</h2>
-                <div class="analysis-table-card">
-                    <div class="raw-data-toolbar">
-                        <div class="table-meta">Current generated dataset</div>
-                        <button class="btn btn-primary download-csv-btn" id="downloadCsvBtn">
-                            <i data-lucide="download"></i>
-                            <span>&#19979;&#36617;&#30446;&#21069;&#36039;&#26009; CSV</span>
-                        </button>
-                    </div>
-                    <div class="analysis-table-wrapper raw-data-table-wrapper">
-                        <table class="analysis-table">
-                            <thead>
-                                <tr>
-                                    <th>X</th>
-                                    <th>Actual Y</th>
-                                    <th>Predicted Y</th>
-                                    <th>Error</th>
-                                    <th>Is Outlier</th>
-                                </tr>
-                            </thead>
-                            <tbody id="rawDataTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-                <p class="section-desc">檢視、過濾、並導出所使用的原始分析數據集。</p>
             </div>
 
         </section>
 
         <!-- CRISP-DM Section (Blank/Skeleton) -->
-        <section id="crisp-dm" class="topic-section-card">
+        <section id="crispdm" class="topic-section-card page-section">
             <div class="section-header">
                 <span class="section-badge"><i data-lucide="git-branch"></i> Methodology</span>
                 <h2 class="section-title">CRISP-DM Process Walkthrough</h2>
@@ -431,7 +423,7 @@
         </section>
 
         <!-- Streamlit Integration Section (Blank/Skeleton) -->
-        <section id="streamlit" class="topic-section-card">
+        <section id="streamlit" class="topic-section-card page-section">
             <div class="section-header">
                 <span class="section-badge"><i data-lucide="server"></i> Backend Architecture</span>
                 <h2 class="section-title">Streamlit Backend Integration</h2>
